@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2B86557D1B62FF8C009EFDA7 /* Icon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B86557C1B62FF8C009EFDA7 /* Icon.xcassets */; };
-		2B86557F1B63056B009EFDA7 /* MacMetersAppTests in Resources */ = {isa = PBXBuildFile; fileRef = 2B86557E1B63056B009EFDA7 /* MacMetersAppTests */; };
 		2B86558C1B6307C9009EFDA7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8655841B6307C9009EFDA7 /* AppDelegate.swift */; };
 		2B86558D1B6307C9009EFDA7 /* DiskIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8655851B6307C9009EFDA7 /* DiskIndicator.swift */; };
 		2B86558E1B6307C9009EFDA7 /* HelpfullFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B8655861B6307C9009EFDA7 /* HelpfullFunctions.swift */; };
@@ -34,7 +33,6 @@
 
 /* Begin PBXFileReference section */
 		2B86557C1B62FF8C009EFDA7 /* Icon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icon.xcassets; sourceTree = "<group>"; };
-		2B86557E1B63056B009EFDA7 /* MacMetersAppTests */ = {isa = PBXFileReference; lastKnownFileType = folder; path = MacMetersAppTests; sourceTree = SOURCE_ROOT; };
 		2B8655841B6307C9009EFDA7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = MacMeters/AppDelegate.swift; sourceTree = "<group>"; };
 		2B8655851B6307C9009EFDA7 /* DiskIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DiskIndicator.swift; path = MacMeters/DiskIndicator.swift; sourceTree = "<group>"; };
 		2B8655861B6307C9009EFDA7 /* HelpfullFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HelpfullFunctions.swift; path = MacMeters/HelpfullFunctions.swift; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 				2B8655941B6308A9009EFDA7 /* MainMenu.xib */,
 				2B8655871B6307C9009EFDA7 /* Info.plist */,
 				2B86557C1B62FF8C009EFDA7 /* Icon.xcassets */,
-				2B86557E1B63056B009EFDA7 /* MacMetersAppTests */,
 				601FC4F719F4BC7400BD8E6B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -200,7 +197,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2B86557D1B62FF8C009EFDA7 /* Icon.xcassets in Resources */,
-				2B86557F1B63056B009EFDA7 /* MacMetersAppTests in Resources */,
 				2B86558F1B6307C9009EFDA7 /* Info.plist in Resources */,
 				2B8655961B6308A9009EFDA7 /* MainMenu.xib in Resources */,
 			);

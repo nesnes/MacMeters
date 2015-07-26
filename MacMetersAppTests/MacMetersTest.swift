@@ -1,10 +1,8 @@
 //
-//  MenubarAppTests.swift
-//  MenubarAppTests
+//  MacMetersAppTests.swift
 //
-//  Created by Lee Brimelow on 10/19/14.
-//  Copyright (c) 2015 Alexandre Brehmer. All rights reserved.
-//
+// Author: Alexandre Brehmer
+// @alexnesnes
 
 import Cocoa
 import XCTest
