@@ -7,13 +7,13 @@
 import Cocoa
 import CoreGraphics
 
-/// Implementation of a MenuBarItem that represent the network usage
+/// Implementation of a MenuBarItem that represents the network usage
 /// Including a Swift-><-ObjectiveC-><-C++ call to get the network informations
 class NetworkIndictator : MenuBarItem {
     
     /**
-        Contructor of the NetworkIndictator
-        - Call the MenuBarItem contructor
+        Constructor of the NetworkIndictator
+        - Call the MenuBarItem constructor
         - Set the width of the icon image
         - Set the updateTime to 0.5 second
     */
@@ -25,9 +25,9 @@ class NetworkIndictator : MenuBarItem {
     
     /**
         Update method periodically called by the parent thread to update the NetworkIndictator icon image
-        - clean the image
-        - get/draw the informations on the image
-        - update the statusIcon with the new image
+        - Clean the image
+        - Get/draw the informations on the image
+        - Update the statusIcon with the new image
     */
     override func update(){
         cleanImage()

@@ -7,7 +7,7 @@
 import Cocoa
 import CoreGraphics
 
-/// Implementation of a MenuBarItem that represent the RAM memory usage
+/// Implementation of a MenuBarItem that represents the RAM memory usage
 /// Including a graph representation of the previous values
 /// Including a Swift-><-ObjectiveC-><-C++ call to get the RAM informations
 class MemoryIndictator : MenuBarItem {
@@ -19,8 +19,8 @@ class MemoryIndictator : MenuBarItem {
     var historic = [[CGFloat]]()
     
     /**
-        Contructor of the MemoryIndicator
-         - Call the MenuBarItem contructor
+        Constructor of the MemoryIndicator
+         - Call the MenuBarItem constructor
          - Set the historic length to the width of the icon image
     */
     override init() {
@@ -30,9 +30,9 @@ class MemoryIndictator : MenuBarItem {
     
     /**
         Update method periodically called by the parent thread to update the MemoryIndictator icon image
-         - clean the image
-         - get/draw the informations on the image
-         - update the statusIcon with the new image
+         - Clean the image
+         - Get/draw the informations on the image
+         - Update the statusIcon with the new image
     */
     override func update(){
         cleanImage()
@@ -90,10 +90,10 @@ class MemoryIndictator : MenuBarItem {
     }
     
     /**
-        Function that update the historic with the given values
+        Function that updates the historic with the given values
         :param: free    free amount of memory to add to the historic
         :param: used    used amount of memory to add to the historic
-        :note: This method also control the size of the historic by removing the old datas
+        :note: This method also controls the size of the historic by removing the old datas
     */
     func updateHistoric(free: CGFloat, used: CGFloat) {
         historic.append([free,used])

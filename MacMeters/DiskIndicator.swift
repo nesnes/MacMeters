@@ -7,13 +7,13 @@
 import Cocoa
 import CoreGraphics
 
-/// Implementation of a MenuBarItem that represent the Disk I/O usage
+/// Implementation of a MenuBarItem that represents the Disk I/O usage
 /// Including a call to 'grep-ed' 'top' command to get the I/O informations
 class DiskIndictator : MenuBarItem {
     
     /**
-        Contructor of the DiskIndictator
-         - Call the MenuBarItem contructor
+        Constructor of the DiskIndictator
+         - Call the MenuBarItem constructor
          - Set the width of the icon image
     */
     override init(){
@@ -94,9 +94,9 @@ class DiskIndictator : MenuBarItem {
     }
     
     /**
-        Get the wrote amount of data by parsing the 'top' command result
+        Get the written amount of data by parsing the 'top' command result
         :param: topResult   String containing the result of the 'top' command
-        :returns: The wrote amount of data on the disk
+        :returns: The written amount of data on the disk
         :note: need to be securized
     */
     func getWriteDisk(topResult: String) -> Int {
@@ -109,7 +109,7 @@ class DiskIndictator : MenuBarItem {
     /**
         Execute the command ``` top -l1 | grep Disks: ``` to get the disk I/O informations
         :returns: The String returned by the standard output of the command 
-        :note: It doesn't look to be the best solution
+        :note: It doesn't seem to be the best solution
     */
     func getTopCommandResult() -> String{
         var output: String = ""
