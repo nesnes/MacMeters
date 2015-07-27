@@ -6,17 +6,17 @@
 
 import Cocoa
 
-/// The MenuBarItem represent an object/indicator that display some information in the Mac status bar.
+/// The MenuBarItem represents an object/indicator that display some informations in the Mac status bar.
 /// These informations are drawn on an image and the image is added as an icon in the status bar
 /// The class is the abstract representation of an indicator
 /// A MenuBarItem implements a thread that makes it independent of the other indicators calcul time
 class MenuBarItem : NSObject {
     
     /// The system object that creates an blank icon in the status bar.
-    /// -1 means that the icon size is vaiable depending of the image displayed
+    /// -1 means that the icon size is variable depending of the image displayed
     let statusIcon = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
     
-    /// Define is the MenuBarItem is enabled or not and eventualy hide the status icon by giving it a size of 0
+    /// Define if the MenuBarItem is enabled or not and eventualy hide the status icon by giving it a size of 0
     var enabled: Bool {
         get{ return self.statusIcon.length == -1}
         set(activated){
@@ -37,7 +37,7 @@ class MenuBarItem : NSObject {
     /// The height of the icon image, by default the height of the status bar
     var height: CGFloat = NSStatusBar.systemStatusBar().thickness
     
-    /// Time between two update of the icon image displaying the informations, by default 1 second
+    /// Time between two updates of the icon image displaying the informations, by default 1 second
     var updateTime: CGFloat = 1
     
     /// The image of the icon
@@ -54,8 +54,8 @@ class MenuBarItem : NSObject {
     
     /**
         Constructor of the MenuBarItem
-         - enable the MenuBarItem
-         - launch the thread
+         - Enable the MenuBarItem
+         - Launch the thread
     */
     override init(){
         super.init()
@@ -93,10 +93,10 @@ class MenuBarItem : NSObject {
     /**
         The function called periodically by the thread.
         This method have to:
-            - get the datas to display
-            - print the datas on the icon image
-            - update the icon image by calling ``` self.statusIcon.image = image ```
-        :note: The method is made abstract by an assert that is launched if the method is not overrrided.
+            - Get the datas to display
+            - Print the datas on the icon image
+            - Update the icon image by calling ``` self.statusIcon.image = image ```
+        :note: The method is made abstract by an assert that is launched if the method is not overridden.
     */
     func update() {
         assert(false, "This method must be overriden by the subclass")

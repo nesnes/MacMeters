@@ -9,7 +9,7 @@
 #ifndef MacMeters_cppBridge_h
 #define MacMeters_cppBridge_h
 
-/// This Objective-C class represent a bridge to the C++ class ``` cppFunctions ```
+/// This Objective-C class represents a bridge to the C++ class ``` cppFunctions ```
 @interface cppFunctionsBridge : NSObject
 + (void) getCpu: (float*) returnTab;
 + (void) getRam: (float*) returnTab;

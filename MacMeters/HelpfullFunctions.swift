@@ -7,15 +7,15 @@
 import Cocoa
 import CoreGraphics
 
-/// This file contains some usefull method that are not natively accessible with Swift.
+/// This file contains some usefull methods that are not natively accessible with Swift.
 
 /**
     Draw a given text on the previously locked image.
-    :param: text    The text to be wrote
+    :param: text    The text to be written
     :param: size    The size of the written text
     :param: color   The color of the written text
-    :param: x       The x position of the beginnig of the text
-    :param: y       The y position of the beginnig of the text
+    :param: x       The x position of the beginning of the text
+    :param: y       The y position of the beginning of the text
     :param: w       The width of the box that contains the text (auto line warpping)
     :param: h       The height of the box that contains the text
     :note: Actually the font is Helvetica by default

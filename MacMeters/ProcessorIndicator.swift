@@ -7,7 +7,7 @@
 import Cocoa
 import CoreGraphics
 
-/// Implementation of a MenuBarItem that represent the Processor usage
+/// Implementation of a MenuBarItem that represents the Processor usage
 /// Including a graph representation of the previous values
 /// Including a Swift-><-ObjectiveC-><-C++ call to get the Processor informations
 class ProcessorIndictator : MenuBarItem {
@@ -19,8 +19,8 @@ class ProcessorIndictator : MenuBarItem {
     var historic = [[CGFloat]]()
     
     /**
-        Contructor of the ProcessorIndictator
-         - Call the MenuBarItem contructor
+        Constructor of the ProcessorIndictator
+         - Call the MenuBarItem constructor
          - Set the historic length to the width of the icon image
          - Set the updateTime to 0.5 second
     */
@@ -32,9 +32,9 @@ class ProcessorIndictator : MenuBarItem {
     
     /**
         Update method periodically called by the parent thread to update the ProcessorIndictator icon image
-         - clean the image
-         - get/draw the informations on the image
-         - update the statusIcon with the new image
+         - Clean the image
+         - Get/draw the informations on the image
+         - Update the statusIcon with the new image
     */
     override func update(){
         cleanImage()
@@ -99,10 +99,10 @@ class ProcessorIndictator : MenuBarItem {
     }
     
     /**
-        Function that update the historic with the given values
+        Function that updates the historic with the given values
         :param: user    user percent used amount to add to the historic
         :param: system  system percent used amount to add to the historic
-        :note: This method also control the size of the historic by removing the old datas
+        :note: This method also controls the size of the historic by removing the old datas
     */
     func updateHistoric(user: CGFloat, system: CGFloat) {
         historic.append([user,system])
