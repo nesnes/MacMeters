@@ -19,7 +19,7 @@ class DiskIndictator : MenuBarItem {
     override init(){
         super.init()
         self.updateTime = 0.5
-        self.width = 10
+        self.width = 40
     }
     
     /**
@@ -55,8 +55,8 @@ class DiskIndictator : MenuBarItem {
         let write: Int = getWriteDisk(topResult)
         //Begin drawing
         image.lockFocus()
-        let barWidth = width/1.5
         let barHeight = height/4
+        let barWidth = barHeight
         
         //Draw read
         var foregroundColor = NSColor.grayColor()
@@ -64,7 +64,7 @@ class DiskIndictator : MenuBarItem {
             foregroundColor = customGreen
         }
         foregroundColor.setFill()
-        NSRectFill(NSMakeRect(width/4, height/4+barHeight*1.5, barWidth, barHeight))
+        NSRectFill(NSMakeRect(1, height/4+barHeight*1.5, barWidth, barHeight))
         
         //Draw write
         foregroundColor = NSColor.grayColor()
@@ -72,7 +72,34 @@ class DiskIndictator : MenuBarItem {
             foregroundColor = customRed
         }
         foregroundColor.setFill()
-        NSRectFill(NSMakeRect(width/4, height/4-barHeight/2.5, barWidth,barHeight))
+        NSRectFill(NSMakeRect(1, height/4-barHeight/2.5, barWidth,barHeight))
+        
+        //Draw disk space
+        var space: [CGFloat] = getDiskSpace()
+        var free = space[0]
+        var total = space[1]
+        
+        //Draw total
+        var unit = "Go"
+        var format = "%.0f"
+        if(total>1000){
+            unit = "To"
+            format = "%.1f"
+            total /= 1000
+        }
+        var txt: String = String(format: format, total)+unit
+        drawText(txt, 10.1, customGreen, barWidth+2, 1, width, height)
+        
+        //Draw free
+        unit = "Go"
+        format = "%.0f"
+        if(total>1000){
+            unit = "To"
+            format = "%.1f"
+            total /= 1000
+        }
+        txt = String(format: format, free)+unit
+        drawText(txt, 10.1, customGreen, barWidth+2, -height/2+2, width, height)
         
         //history
         previousReadDisk = read
@@ -104,6 +131,27 @@ class DiskIndictator : MenuBarItem {
         let matches:String = matchesForRegexInText(pattern,topResult)[0]
         let tab = split(matches){$0==" "}
         return tab[1].toInt()!
+    }
+    
+    /**
+        Get the free and total space available on main disk
+        :returns: ac CGFloat array containing the space informations [0]=freeSpace [1]=TotalSpace
+    */
+    func getDiskSpace() -> [CGFloat] {
+        var output: [CGFloat] = [0,0]
+        autoreleasepool{
+            var documentDirectoryPath = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+            if let systemAttributes = NSFileManager.defaultManager().attributesOfFileSystemForPath(documentDirectoryPath.last as! String, error: nil) {
+                var freeSize: CGFloat = systemAttributes[NSFileSystemFreeSize] as! CGFloat
+                var totalSize: CGFloat = systemAttributes[NSFileSystemSize] as! CGFloat
+                freeSize = freeSize / 1000/1000/1000;    //Convert to GBytes
+                totalSize = totalSize / 1000/1000/1000;   //Convert to GBytes
+                output[0]=freeSize
+                output[1]=totalSize
+            }
+        }
+        // something failed
+        return output
     }
     
     /**
