@@ -8,4 +8,4 @@ Please note that the project is at an early stage, a lot of things remain to be 
 
 Actually the colors of the indicators are suited for the Apple Dark theme.
 
-[[ScreenShot.png]]
+![alt text](ScreenShot.png)
