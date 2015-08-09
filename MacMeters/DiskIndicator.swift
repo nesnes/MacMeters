@@ -50,9 +50,9 @@ class DiskIndictator : MenuBarItem {
     */
     func draw(image: NSImage, x: Double,y: Double, width: CGFloat, height: CGFloat) {
         //getting informations
-        var topResult: String = getTopCommandResult()
-        let read: Int = getReadDisk(topResult)
-        let write: Int = getWriteDisk(topResult)
+      //  var topResult: String = getTopCommandResult()
+      //  let read: Int = getReadDisk(topResult)
+      //  let write: Int = getWriteDisk(topResult)
         //Begin drawing
         image.lockFocus()
         let barHeight = height/4
@@ -60,7 +60,7 @@ class DiskIndictator : MenuBarItem {
         
         //Draw read
         var foregroundColor = NSColor.grayColor()
-        if(read>previousReadDisk){
+      /*  if(read>previousReadDisk){
             foregroundColor = customGreen
         }
         foregroundColor.setFill()
@@ -73,7 +73,7 @@ class DiskIndictator : MenuBarItem {
         }
         foregroundColor.setFill()
         NSRectFill(NSMakeRect(1, height/4-barHeight/2.5, barWidth,barHeight))
-        
+      */
         //Draw disk space
         var space: [CGFloat] = getDiskSpace()
         var free = space[0]
@@ -102,8 +102,8 @@ class DiskIndictator : MenuBarItem {
         drawText(txt, 10.1, customGreen, barWidth+2, -height/2+2, width, height)
         
         //history
-        previousReadDisk = read
-        previousWriteDisk = write
+    //    previousReadDisk = read
+    //    previousWriteDisk = write
         image.unlockFocus()
     }
     
