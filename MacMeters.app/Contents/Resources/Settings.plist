@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>diskFreeTextColor</key>
+	<integer>3066993</integer>
+	<key>diskTotalTextColor</key>
+	<integer>3066993</integer>
+	<key>processorHighUsedPercentTextColor</key>
+	<integer>10301218</integer>
+	<key>processorLowUsedPercentTextColor</key>
+	<integer>3066993</integer>
+	<key>processorUserUsedGraphColor</key>
+	<integer>9807270</integer>
+	<key>processorSystemUsedGraphColor</key>
+	<integer>8359053</integer>
+	<key>networkUploadTextColor</key>
+	<integer>10301218</integer>
+	<key>networkDownloadTextColor</key>
+	<integer>3066993</integer>
+	<key>memoryHighUsedPercentTextColor</key>
+	<integer>10301218</integer>
+	<key>memoryLowUsedPercentTextColor</key>
+	<integer>3066993</integer>
+	<key>memoryFreeTextColor</key>
+	<integer>4539717</integer>
+	<key>memoryFreeGraphColor</key>
+	<integer>9807270</integer>
+	<key>memoryUsedGraphColor</key>
+	<integer>8359053</integer>
+</dict>
+</plist>
