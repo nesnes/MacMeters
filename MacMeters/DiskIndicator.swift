@@ -11,6 +11,10 @@ import CoreGraphics
 /// Including a call to 'grep-ed' 'top' command to get the I/O informations
 class DiskIndictator : MenuBarItem {
     
+    /// Set of color variables used to display the informations
+    var diskTotalTextColor = NSColor()
+    var diskFreeTextColor = NSColor()
+    
     /**
         Constructor of the DiskIndictator
          - Call the MenuBarItem constructor
@@ -23,13 +27,23 @@ class DiskIndictator : MenuBarItem {
     }
     
     /**
+    Read the values stored in the settings to display a custumized indicator
+    */
+    func readSettings(){
+        diskTotalTextColor = SettingsManager.getColorValue("diskTotalTextColor")
+        diskFreeTextColor = SettingsManager.getColorValue("diskFreeTextColor")
+    }
+    
+    /**
         Update method periodically called by the parent thread to update the NetworkIndictator icon image
          - clean the image
+         - Read the settings of the indicator
          - get/draw the informations on the image
          - update the statusIcon with the new image
     */
     override func update(){
         cleanImage()
+        readSettings()
         draw(image, x: 0, y: 0, width: width, height: height)
         self.statusIcon.image = image
     }
@@ -53,6 +67,7 @@ class DiskIndictator : MenuBarItem {
       //  var topResult: String = getTopCommandResult()
       //  let read: Int = getReadDisk(topResult)
       //  let write: Int = getWriteDisk(topResult)
+        
         //Begin drawing
         image.lockFocus()
         let barHeight = height/4
@@ -60,6 +75,8 @@ class DiskIndictator : MenuBarItem {
         
         //Draw read
         var foregroundColor = NSColor.grayColor()
+        
+        // --- This feature is temporally disabled waiting for a better way to get the informations (actually parsing the 'top' command)
       /*  if(read>previousReadDisk){
             foregroundColor = customGreen
         }
@@ -74,6 +91,7 @@ class DiskIndictator : MenuBarItem {
         foregroundColor.setFill()
         NSRectFill(NSMakeRect(1, height/4-barHeight/2.5, barWidth,barHeight))
       */
+        
         //Draw disk space
         var space: [CGFloat] = getDiskSpace()
         var free = space[0]
@@ -88,18 +106,22 @@ class DiskIndictator : MenuBarItem {
             total /= 1000
         }
         var txt: String = String(format: format, total)+unit
-        drawText(txt, 10.1, customGreen, barWidth+2, 1, width, height)
+        drawText(txt, 10.1, diskTotalTextColor, barWidth+2, 1, width, height)
         
         //Draw free
         unit = "Go"
         format = "%.0f"
-        if(total>1000){
+        if(free>1000){
             unit = "To"
             format = "%.1f"
-            total /= 1000
+            free /= 1000
+        }
+        else if(free<100){
+            unit = "Go"
+            format = "%.1f"
         }
         txt = String(format: format, free)+unit
-        drawText(txt, 10.1, customGreen, barWidth+2, -height/2+2, width, height)
+        drawText(txt, 10.1, diskFreeTextColor, barWidth+2, -height/2+2, width, height)
         
         //history
     //    previousReadDisk = read

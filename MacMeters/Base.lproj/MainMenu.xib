@@ -688,6 +688,11 @@
                         <action selector="toggleMemory:" target="Voe-Tx-rLC" id="pU2-sl-VOx"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Settings" keyEquivalent="s" id="fb1-BG-TJw">
+                    <connections>
+                        <action selector="openSettings:" target="Voe-Tx-rLC" id="gOj-kP-CHe"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Quit" keyEquivalent="q" id="od9-su-Gke">
                     <connections>
                         <action selector="quitClicked:" target="Voe-Tx-rLC" id="cbd-T0-GoO"/>

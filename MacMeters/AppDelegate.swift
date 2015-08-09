@@ -17,8 +17,12 @@ import CoreGraphics
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
+    
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var statusMenu: NSMenu!
+    
+    ///Creation of the settingsWindow object
+    var settingsWindow = SettingsWindow(windowNibName: "SettingsWindow")
     
     ///Creation of the indicators
     var processorIndicator: MenuBarItem = ProcessorIndictator()
@@ -87,5 +91,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
+    ///Handle the "Settings" list item click and open the SettingsWindow
+    @IBAction func openSettings(sender: NSMenuItem) {
+        settingsWindow.showWindow(self)
+    }
 }
 

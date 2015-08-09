@@ -11,6 +11,10 @@ import CoreGraphics
 /// Including a Swift-><-ObjectiveC-><-C++ call to get the network informations
 class NetworkIndictator : MenuBarItem {
     
+    /// Set of color variables used to display the informations
+    var networkDownloadTextColor = NSColor()
+    var networkUploadTextColor = NSColor()
+    
     /**
         Constructor of the NetworkIndictator
         - Call the MenuBarItem constructor
@@ -24,13 +28,23 @@ class NetworkIndictator : MenuBarItem {
     }
     
     /**
+    Read the values stored in the settings to display a custumized indicator
+    */
+    func readSettings(){
+        networkDownloadTextColor = SettingsManager.getColorValue("networkDownloadTextColor")
+        networkUploadTextColor = SettingsManager.getColorValue("networkUploadTextColor")
+    }
+    
+    /**
         Update method periodically called by the parent thread to update the NetworkIndictator icon image
         - Clean the image
+        - Read the settings of the indicator
         - Get/draw the informations on the image
         - Update the statusIcon with the new image
     */
     override func update(){
         cleanImage()
+        readSettings()
         draw(image, x: 0, y: 0, width: width, height: height)
         self.statusIcon.image = image
     }
@@ -63,7 +77,7 @@ class NetworkIndictator : MenuBarItem {
             format = "%.1f"
         }
         var txt: String = "⇣"+String(format: format, incoming)+unit
-        drawText(txt, 11.0, customGreen, barWidth, 2, width, height)
+        drawText(txt, 11.0, networkDownloadTextColor, barWidth, 2, width, height)
         
         unit = "Ko/s"
         format = "%.0f"
@@ -73,7 +87,7 @@ class NetworkIndictator : MenuBarItem {
             format = "%.1f"
         }
         txt = "⇡"+String(format: format, outgoing)+unit
-        drawText(txt, 11.0, customRed, barWidth, -barHeight+2, width, height)
+        drawText(txt, 11.0, networkUploadTextColor, barWidth, -barHeight+2, width, height)
         
         image.unlockFocus()
     }
