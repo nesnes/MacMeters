@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2B35D7671B77B6E4001470A3 /* SettingsWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B35D7651B77B6E4001470A3 /* SettingsWindow.xib */; };
 		2B67DC2A1B776A9100DC764A /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B67DC291B776A9100DC764A /* SettingsManager.swift */; };
 		2B67DC2C1B776BC700DC764A /* Settings.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2B67DC2B1B776BC700DC764A /* Settings.plist */; };
 		2B86557D1B62FF8C009EFDA7 /* Icon.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2B86557C1B62FF8C009EFDA7 /* Icon.xcassets */; };
@@ -21,6 +22,7 @@
 		2B8655961B6308A9009EFDA7 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B8655941B6308A9009EFDA7 /* MainMenu.xib */; };
 		2BAE883F1B6511C700F1F681 /* cppFunctions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE883D1B6511C700F1F681 /* cppFunctions.cpp */; };
 		2BAE88411B65140600F1F681 /* cppBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = 2BAE88401B65140600F1F681 /* cppBridge.mm */; };
+		2BE0AF911B77BEDF002B6869 /* SettingsWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2BE0AF901B77BEDF002B6869 /* SettingsWindow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2B35D7651B77B6E4001470A3 /* SettingsWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SettingsWindow.xib; path = MacMeters/SettingsWindow.xib; sourceTree = "<group>"; };
 		2B67DC291B776A9100DC764A /* SettingsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsManager.swift; path = MacMeters/SettingsManager.swift; sourceTree = "<group>"; };
 		2B67DC2B1B776BC700DC764A /* Settings.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Settings.plist; path = MacMeters/Settings.plist; sourceTree = "<group>"; };
 		2B86557C1B62FF8C009EFDA7 /* Icon.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Icon.xcassets; sourceTree = "<group>"; };
@@ -51,6 +54,7 @@
 		2BAE88401B65140600F1F681 /* cppBridge.mm */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp; fileEncoding = 4; name = cppBridge.mm; path = /Users/alexandrebrehmer/Desktop/workingon/HomeMadeMenuMeters/MacMeters/cppBridge.mm; sourceTree = "<absolute>"; };
 		2BAE88441B65172B00F1F681 /* bridgingHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = bridgingHeader.h; path = MacMeters/bridgingHeader.h; sourceTree = "<group>"; };
 		2BAE88451B65174700F1F681 /* cppBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = cppBridge.h; path = MacMeters/cppBridge.h; sourceTree = "<group>"; };
+		2BE0AF901B77BEDF002B6869 /* SettingsWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsWindow.swift; path = MacMeters/SettingsWindow.swift; sourceTree = "<group>"; };
 		601FC4F619F4BC7400BD8E6B /* MacMeters.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacMeters.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		601FC50619F4BC7400BD8E6B /* MacMetersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MacMetersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -96,15 +100,25 @@
 			name = cpp;
 			sourceTree = "<group>";
 		};
-		601FC4ED19F4BC7400BD8E6B = {
+		2BE0AF921B77F9D6002B6869 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				2B67DC2B1B776BC700DC764A /* Settings.plist */,
+				2B67DC291B776A9100DC764A /* SettingsManager.swift */,
+				2BE0AF901B77BEDF002B6869 /* SettingsWindow.swift */,
+				2B35D7651B77B6E4001470A3 /* SettingsWindow.xib */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		601FC4ED19F4BC7400BD8E6B = {
+			isa = PBXGroup;
+			children = (
 				2BAE88461B651D5300F1F681 /* cpp */,
 				2B8655841B6307C9009EFDA7 /* AppDelegate.swift */,
-				2B67DC291B776A9100DC764A /* SettingsManager.swift */,
 				2B8655891B6307C9009EFDA7 /* MenuBarItem.swift */,
 				2B8655861B6307C9009EFDA7 /* HelpfullFunctions.swift */,
+				2BE0AF921B77F9D6002B6869 /* Settings */,
 				2B8655971B630976009EFDA7 /* Indicators */,
 				2B8655941B6308A9009EFDA7 /* MainMenu.xib */,
 				2B8655871B6307C9009EFDA7 /* Info.plist */,
@@ -204,6 +218,7 @@
 			files = (
 				2B86557D1B62FF8C009EFDA7 /* Icon.xcassets in Resources */,
 				2B67DC2C1B776BC700DC764A /* Settings.plist in Resources */,
+				2B35D7671B77B6E4001470A3 /* SettingsWindow.xib in Resources */,
 				2B86558F1B6307C9009EFDA7 /* Info.plist in Resources */,
 				2B8655961B6308A9009EFDA7 /* MainMenu.xib in Resources */,
 			);
@@ -223,6 +238,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2BE0AF911B77BEDF002B6869 /* SettingsWindow.swift in Sources */,
 				2B86558E1B6307C9009EFDA7 /* HelpfullFunctions.swift in Sources */,
 				2B8655911B6307C9009EFDA7 /* MenuBarItem.swift in Sources */,
 				2B86558D1B6307C9009EFDA7 /* DiskIndicator.swift in Sources */,

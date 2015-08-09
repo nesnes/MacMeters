@@ -66,3 +66,8 @@ func getNSColor(r: Int, g: Int, b: Int) -> NSColor {
 func getNSColorFromHex(hexValue : Int) -> NSColor {
     return getNSColor((hexValue >> 16) & 0xff, (hexValue >> 8) & 0xff, hexValue & 0xff)
 }
+
+func getIntColorFromFloat(r: CGFloat, g: CGFloat, b: CGFloat) -> Int{
+    var result = (Int(round(r*255))<<16) + (Int(round(g*255))<<8) + (Int(round(b*255)))
+    return result
+}

@@ -41,7 +41,7 @@ class SettingsManager {
     }
     
     /**
-    Get the String value corresponding to a key in the dictionary representing the plist file
+        Get the String value corresponding to a key in the dictionary representing the plist file
     */
     class func getColorValue(key : String) -> NSColor{
         var value = self.settings.settingsDict.objectForKey(key)! as! Int
@@ -54,5 +54,12 @@ class SettingsManager {
     class func setValue(key : String, value : NSObject){
         self.settings.settingsDict.setValue(value, forKey: key as String)
         self.settings.settingsDict.writeToFile(settings.path, atomically: false)
+    }
+    
+    /**
+        Return the keys stored in the plist file
+    */
+    class func getKeyList() -> [String]{
+        return self.settings.settingsDict.allKeys as! [String]
     }
 }
