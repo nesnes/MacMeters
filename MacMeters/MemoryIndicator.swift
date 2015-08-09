@@ -15,8 +15,15 @@ class MemoryIndictator : MenuBarItem {
     /// The length of the data historic, re-initialized in init() function
     var historicLength: Int = 0
     
-    // The array that contains the data historic ``` [ [0,0], [0,0], ... ] ``` , with [[freeRamAmount,usedRamAmount]] in MBytes
+    /// The array that contains the data historic ``` [ [0,0], [0,0], ... ] ``` , with [[freeRamAmount,usedRamAmount]] in MBytes
     var historic = [[CGFloat]]()
+    
+    /// Set of color variables used to display the informations
+    var memoryUsedGraphColor = NSColor()
+    var memoryFreeGraphColor = NSColor()
+    var memoryFreeTextColor = NSColor()
+    var memoryLowUsedPercentTextColor = NSColor()
+    var memoryHighUsedPercentTextColor = NSColor()
     
     /**
         Constructor of the MemoryIndicator
@@ -29,13 +36,26 @@ class MemoryIndictator : MenuBarItem {
     }
     
     /**
+        Read the values stored in the settings to display a custumized indicator
+    */
+    func readSettings(){
+        memoryUsedGraphColor = SettingsManager.getColorValue("memoryUsedGraphColor")
+        memoryFreeGraphColor = SettingsManager.getColorValue("memoryFreeGraphColor")
+        memoryFreeTextColor = SettingsManager.getColorValue("memoryFreeTextColor")
+        memoryLowUsedPercentTextColor = SettingsManager.getColorValue("memoryLowUsedPercentTextColor")
+        memoryHighUsedPercentTextColor = SettingsManager.getColorValue("memoryHighUsedPercentTextColor")
+    }
+    
+    /**
         Update method periodically called by the parent thread to update the MemoryIndictator icon image
          - Clean the image
+         - Read the settings of the indicator
          - Get/draw the informations on the image
          - Update the statusIcon with the new image
     */
     override func update(){
         cleanImage()
+        readSettings()
         draw(image, x: 0, y: 0, width: width, height: height)
         self.statusIcon.image = image
     }
@@ -64,24 +84,24 @@ class MemoryIndictator : MenuBarItem {
             free = values[0]
             used = values[1]
             //Draw used memory
-            var foregroundColor: NSColor = customDarkGray
+            var foregroundColor: NSColor = memoryUsedGraphColor
             foregroundColor.setFill()
             NSRectFill(NSMakeRect(index, 0, 1,height/total*used))
         
             //Draw free memory
-            foregroundColor = customLightGray
+            foregroundColor = memoryFreeGraphColor
             foregroundColor.setFill()
             NSRectFill(NSMakeRect(index, height/total*used+0.2, 1, height/total*free))
             index++
         }
         
         let txt: String = String(Int(free))+String("M")
-        drawText(txt, 10.0, customLightBlack, 2, 2, width, height)
+        drawText(txt, 10.0, memoryFreeTextColor, 2, 2, width, height)
         
         var percents: Int = Int(round(100.0/total*used))
-        var percentColor = customRed
+        var percentColor = memoryHighUsedPercentTextColor
         if(percents < 50){
-            percentColor = customGreen
+            percentColor = memoryLowUsedPercentTextColor
         }
         let txtTotal = String(percents)+"%"
         drawText(txtTotal, 13.0, percentColor, 2, -height/3+2, width, height)

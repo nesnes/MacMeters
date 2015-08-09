@@ -62,3 +62,7 @@ func matchesForRegexInText(regex: String!, text: String!) -> [String] {
 func getNSColor(r: Int, g: Int, b: Int) -> NSColor {
     return NSColor(calibratedRed: CGFloat(r)/255, green: CGFloat(g)/255, blue: CGFloat(b)/255, alpha:CGFloat(1))
 }
+
+func getNSColorFromHex(hexValue : Int) -> NSColor {
+    return getNSColor((hexValue >> 16) & 0xff, (hexValue >> 8) & 0xff, hexValue & 0xff)
+}

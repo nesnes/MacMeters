@@ -18,6 +18,12 @@ class ProcessorIndictator : MenuBarItem {
     // The array that contains the data historic ``` [ [0,0], [0,0], ... ] ``` , with [[userCpuPercent,systemCpuPercent]]
     var historic = [[CGFloat]]()
     
+    /// Set of color variables used to display the informations
+    var processorSystemUsedGraphColor = NSColor()
+    var processorUserUsedGraphColor = NSColor()
+    var processorLowUsedPercentTextColor = NSColor()
+    var processorHighUsedPercentTextColor = NSColor()
+    
     /**
         Constructor of the ProcessorIndictator
          - Call the MenuBarItem constructor
@@ -31,13 +37,25 @@ class ProcessorIndictator : MenuBarItem {
     }
     
     /**
+    Read the values stored in the settings to display a custumized indicator
+    */
+    func readSettings(){
+        processorSystemUsedGraphColor = SettingsManager.getColorValue("processorSystemUsedGraphColor")
+        processorUserUsedGraphColor = SettingsManager.getColorValue("processorUserUsedGraphColor")
+        processorLowUsedPercentTextColor = SettingsManager.getColorValue("processorLowUsedPercentTextColor")
+        processorHighUsedPercentTextColor = SettingsManager.getColorValue("processorHighUsedPercentTextColor")
+    }
+    
+    /**
         Update method periodically called by the parent thread to update the ProcessorIndictator icon image
          - Clean the image
+         - Read the settings of the indicator
          - Get/draw the informations on the image
          - Update the statusIcon with the new image
     */
     override func update(){
         cleanImage()
+        readSettings()
         draw(image, x: 0, y: 0, width: width, height: height)
         self.statusIcon.image = image
     }
@@ -68,14 +86,14 @@ class ProcessorIndictator : MenuBarItem {
             system = values[1]
             if(system>0) {
                 //Draw system usage
-                let foregroundColor = customDarkGray
+                let foregroundColor = processorSystemUsedGraphColor
                 foregroundColor.setFill()
                 NSRectFill(NSMakeRect(index, 0, 1,height/100*system))
             }
             
             if(user>0){
-                //Draw outgoing
-                let foregroundColor = customLightGray
+                //Draw user usage
+                let foregroundColor = processorUserUsedGraphColor
                 foregroundColor.setFill()
                 NSRectFill(NSMakeRect(index, height/100*system+0.5, 1, height/100*user))
             }
@@ -85,10 +103,10 @@ class ProcessorIndictator : MenuBarItem {
         /*let txt: String = String(Int(round(system))) + "+" + String(Int(round(user)))
         drawText(txt, size: 10.0, color: NSColor.blueColor(), x: 0, y: -height/2, w: width, h: height)*/
         
-        var textColor: NSColor = customGreen
+        var textColor: NSColor = processorLowUsedPercentTextColor
         var y: CGFloat = 2
         if(used > 50) {
-            textColor = customRed
+            textColor = processorHighUsedPercentTextColor
             y = -height/4-2
         }
         let txtTotal = String(Int(round(used)))+"%"
